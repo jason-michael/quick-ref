@@ -1,8 +1,63 @@
 This is a personal reference guide for various setups, syntax, etc...
 
 # Index
+- [JS Node command](#js-node-command)
 - [Pug (Jade)](#pug-(jade))
 - [Sass](#sass)
+
+# JS Node Command
+
+Use javascript to run node commands.
+
+#### Node.js ^8.1.4
+```javascript
+const { exec } = require('child_process');
+exec('touch index.html && mkdir assets', (err, stdout, stderr) => {
+  if (err) {
+    // node couldn't execute the command
+    return;
+  }
+
+  // the *entire* stdout and stderr (buffered)
+  console.log(`stdout: ${stdout}`);
+  console.log(`stderr: ${stderr}`);
+});
+```
+
+#### Using with Promises
+```javascript
+const util = require('util');
+const exec = util.promisify(require('child_process').exec);
+
+async function ls() {
+  const { stdout, stderr } = await exec('ls');
+  console.log('stdout:', stdout);
+  console.log('stderr:', stderr);
+}
+ls();
+```
+
+#### Receive data in chunks (output as stream)
+```javascript
+const { spawn } = require('child_process');
+const child = spawn('ls', ['-lh', '/usr']);
+
+// use child.stdout.setEncoding('utf8'); if you want text chunks
+child.stdout.on('data', (chunk) => {
+  // data from standard output is here as buffers
+});
+
+// since these are streams, you can pipe them elsewhere
+child.stderr.pipe(dest);
+
+child.on('close', (code) => {
+  console.log(`child process exited with code ${code}`);
+});
+```
+
+[Source: Stack Overflow](https://stackoverflow.com/questions/20643470/execute-a-command-line-binary-with-node-js)
+
+[Back to top](#index)
 
 # Pug (Jade)
 
@@ -10,15 +65,9 @@ This is a personal reference guide for various setups, syntax, etc...
     npm i pug-cli -g
 
 ### Watch and render changes
-    pug -w ./jade -o ./html -P
+    pug -w ./input.pug -o ./output.html -P
 
-| Flag      | Description                           |
-| ---       | ---                                   |
-| `-w`      | watch file                            |
-| `./jade`  | where to watch for changes            |
-| `-o`      | output                                |
-| `./html`  | where to render the output            |
-| `-P`      | pretty print (not minified, optional) |
+Note: using `./` for input will watch for project-wide changes.
 
 ### Syntax
 
