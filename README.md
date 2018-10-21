@@ -5,14 +5,13 @@ This is a personal reference guide for various setups, syntax, etc...
 
 # Pug (Jade)
 
-## Setup
+### Setup
 
     npm i pug-cli -g
 
-## Watch and render changes
+### Watch and render changes
 
     pug -w ./jade -o ./html -P
-
 
 | Flag      | Description                           |
 | ---       | ---                                   |
@@ -22,7 +21,7 @@ This is a personal reference guide for various setups, syntax, etc...
 | `./html`  | where to render the output            |
 | `-P`      | pretty print (not minified, optional) |
 
-## Syntax
+### Syntax
 
 ```pug
 doctype html
