@@ -1,13 +1,16 @@
 This is a personal reference guide for various setups, syntax, etc...
 
 # Index
-- [JS Node command](#js-node-command)
+- [JS/Node Terminal Operation](#js/node-terminal-operation)
 - [Pug (Jade)](#pug-(jade))
 - [Sass](#sass)
 
-# JS Node Command
+# JS/Node Terminal Operation
 
-Use javascript to run node commands.
+Use javascript and node to run terminal commands.
+
+[Source: Stack Overflow](https://stackoverflow.com/questions/20643470/execute-a-command-line-binary-with-node-js)
+
 
 #### Node.js ^8.1.4
 ```javascript
@@ -54,8 +57,8 @@ child.on('close', (code) => {
   console.log(`child process exited with code ${code}`);
 });
 ```
-
-[Source: Stack Overflow](https://stackoverflow.com/questions/20643470/execute-a-command-line-binary-with-node-js)
+#### Run
+    node file.js
 
 [Back to top](#index)
 
