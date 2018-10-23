@@ -2,7 +2,8 @@ This is a personal reference guide for various setups, syntax, etc...
 
 # Index
 - [JS/Node Terminal Operation](#js/node-terminal-operation)
-- [Pug (Jade)](#pug-(jade))
+- [Pug (Jade)](#pug/jade)
+- [npm Publish](#npm-publish)
 - [Sass](#sass)
 
 # JS/Node Terminal Operation
@@ -62,7 +63,7 @@ child.on('close', (code) => {
 
 [Back to top](#index)
 
-# Pug (Jade)
+# Pug/Jade
 
 ### Setup
     npm i pug-cli -g
@@ -102,6 +103,29 @@ html(lang="en")
 ```
 [Back to top](#index)
 
+# npm Publish
+![npm-publish](./images/npm-publish.png?raw=true)
+
+Notice from image above:
+- `name` the package name.
+- `bin` includes the commands/files to run:
+  - `hangman` is the command.
+  - `hangman.js` is the file to run.
+
+**Important:** If you haven't added yourself as an npm user...
+    
+    npm adduser
+
+...and run through the prompts.
+
+Then...
+
+    npm publish
+
+**Note:** `npm publish` is used to update packages as well.
+
+[Back to top](#index)
+
 # Sass
 
 ### Setup
@@ -112,6 +136,7 @@ html(lang="en")
 
 ### Watch for changes and compile
     sass -w path/file.sass:path/file.css
+**Note:** Also check out [Live Sass Compiler](https://github.com/ritwickdey/vscode-live-sass-compiler) for VS Code.
 
 ### Syntax
 ```
@@ -150,6 +175,7 @@ nav
     padding: 6px 12px
     text-decoration: none
 ```
+[Back to top](#index)
 
 ## Sass folder structure examples
 
