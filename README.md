@@ -133,6 +133,8 @@ Then...
 
 ### Build
     sass source/path/main.sass build/path/main.css
+    
+**Note:** add `--style compressed` to minify the build file.
 
 ### Watch for changes and compile
     sass -w path/file.sass:path/file.css
